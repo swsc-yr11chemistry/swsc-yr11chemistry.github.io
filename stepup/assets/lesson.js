@@ -12,6 +12,7 @@ target:'<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx
 ques:'<circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.7.4-1 1-1 1.7M12 17h.01"/>',
 list:'<path d="M9 6h11M9 12h11M9 18h11M4 6h.01M4 12h.01M4 18h.01"/>',
 book:'<path d="M4 4h12a3 3 0 0 1 3 3v13H7a3 3 0 0 1-3-3z"/><path d="M8 8h7M8 12h7"/>',
+back:'<path d="M15 6l-6 6 6 6"/>',
 board:'<rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/>'};
 function svg(n,cls){return '<svg class="ico'+(cls?' '+cls:'')+'" viewBox="0 0 24 24" aria-hidden="true">'+IC[n]+'</svg>'}
 var S={done:{},cur:null,q:{}};
@@ -19,7 +20,7 @@ try{var r=JSON.parse(localStorage.getItem(L.key)||'{}');for(var k in r)S[k]=r[k]
 function save(){try{localStorage.setItem(L.key,JSON.stringify(S))}catch(e){}}
 
 /* header */
-var h='<div class="toprow"><div class="toolbtns"><button class="tbtn" id="wordsBtn" type="button">'+svg('book')+'Key words</button><button class="tbtn" id="boardBtn" type="button">'+svg('board')+'Show on the board</button></div></div>'+
+var h='<div class="toprow"><a class="tbtn back" href="'+(L.outline||'../../')+'">'+svg('back')+'Course outline</a><div class="toolbtns"><button class="tbtn" id="wordsBtn" type="button">'+svg('book')+'Key words</button><button class="tbtn" id="boardBtn" type="button">'+svg('board')+'Show on the board</button></div></div>'+
 '<div class="hero"><div class="txt"><div class="eyebrow">'+esc(L.eyebrow)+'</div><h1>'+esc(L.title)+'</h1><div class="sub">'+esc(L.sub)+'</div><div class="kq">'+svg('ques')+'<span>'+esc(L.kq)+'</span></div></div>'+L.art+'</div>'+
 '<div class="hgrid"><div class="hbox"><div class="lab">'+svg('list')+'Today you will</div><ol>'+L.steps.map(function(s){return '<li>'+s+'</li>'}).join('')+'</ol></div>'+
 '<div class="hbox"><div class="lab">'+svg('target')+'Learning intention</div><p>'+L.li+'</p><div class="lab" style="margin-top:6px">Success criteria</div><ul>'+L.must.map(function(s){return '<li>'+s+'</li>'}).join('')+'</ul><details><summary>Show the Should and Could criteria</summary><ul>'+L.more.map(function(s){return '<li>'+s+'</li>'}).join('')+'</ul></details></div></div>';
