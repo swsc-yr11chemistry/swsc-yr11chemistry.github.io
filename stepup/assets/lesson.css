@@ -26,7 +26,7 @@ img{max-width:100%}
 .hero .kq .ico{color:#ffe08a;margin-top:3px}
 .hero .art{width:min(280px,32vw);height:auto}
 @media (max-width:680px){.hero{grid-template-columns:1fr}.hero .art{width:200px;justify-self:end;margin-top:-6px}}
-.hgrid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:12px}
+.hgrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:12px}
 @media (max-width:680px){.hgrid{grid-template-columns:1fr}}
 .hbox{background:var(--surface);border:1px solid var(--line);border-top:6px solid var(--orange);border-radius:16px;padding:12px 16px;display:grid;gap:6px;align-content:start;min-width:0}
 .hbox+.hbox{border-top-color:var(--sdg)}
@@ -170,7 +170,7 @@ details.reveal>div{margin-top:8px;font-size:16px;line-height:1.9}
 .gopt[aria-pressed="true"]{border-color:var(--leaf);background:var(--leaf-soft);font-weight:700}
 .tbtn.back{text-decoration:none;color:var(--ink)}
 
-/* senior style */
+
 .hero{border-radius:4px;box-shadow:none}
 .panel{border-radius:4px;box-shadow:none;border-top-width:1px}
 .hbox{border-radius:4px}
@@ -240,3 +240,5 @@ svg .ao{fill:var(--amber-soft);stroke:var(--acc2);stroke-width:2}
 .endnav a{color:var(--acc);font-weight:700}
 
 @media (max-width:900px){.hero::after{right:auto;left:55%;font-size:220px;top:-20px}}
+.hgrid .hbox.htyw{border-top-color:var(--acc2)}.hgrid .hbox.htyw .lab{color:var(--acc2)}
+.hgrid .hbox.hli{border-top-color:var(--acc)}.hgrid .hbox.hli .lab{color:var(--sdg)}

@@ -19,17 +19,17 @@ var S={done:{},cur:null,q:{}};
 try{var r=JSON.parse(localStorage.getItem(L.key)||'{}');for(var k in r)S[k]=r[k]}catch(e){}
 function save(){try{localStorage.setItem(L.key,JSON.stringify(S))}catch(e){}}
 
-/* header */
+
 var h='<div class="toprow"><a class="tbtn back" href="'+(L.outline||'../../')+'">'+svg('back')+'Course outline</a><div class="toolbtns"><button class="tbtn" id="wordsBtn" type="button">'+svg('book')+'Key words</button><button class="tbtn" id="boardBtn" type="button">'+svg('board')+'Show on the board</button></div></div>'+
 '<div class="hero"><div class="txt"><div class="eyebrow">'+esc(L.eyebrow)+'</div><h1>'+esc(L.title)+'</h1><div class="sub">'+esc(L.sub)+'</div><div class="kq">'+svg('ques')+'<span>'+esc(L.kq)+'</span></div></div>'+L.art+'</div>'+
-'<div class="hgrid"><div class="hbox"><div class="lab">'+svg('list')+'Today you will</div><ol>'+L.steps.map(function(s){return '<li>'+s+'</li>'}).join('')+'</ol></div>'+
-'<div class="hbox"><div class="lab">'+svg('target')+'Learning intention</div><p>'+L.li+'</p><div class="lab" style="margin-top:6px">Success criteria</div><ul>'+L.must.map(function(s){return '<li>'+s+'</li>'}).join('')+'</ul><details><summary>Show the Should and Could criteria</summary><ul>'+L.more.map(function(s){return '<li>'+s+'</li>'}).join('')+'</ul></details></div></div>';
+'<div class="hgrid"><div class="hbox hli"><div class="lab">'+svg('target')+'Learning intention</div><p>'+L.li+'</p><div class="lab" style="margin-top:6px">Success criteria</div><ul>'+L.must.map(function(s){return '<li>'+s+'</li>'}).join('')+'</ul><details><summary>Show the Should and Could criteria</summary><ul>'+L.more.map(function(s){return '<li>'+s+'</li>'}).join('')+'</ul></details></div>'+
+'<div class="hbox htyw"><div class="lab">'+svg('list')+'Today you will</div><ol>'+L.steps.map(function(s){return '<li>'+s+'</li>'}).join('')+'</ol></div></div>';
 $('#head').innerHTML=h;$('.hero').setAttribute('data-n',L.num||'');
-var sd=document.createElement('aside');sd.className='side';sd.innerHTML='<div class="prog"><div class="pbar"><i id="pfill"></i></div><div class="pmeta"><span id="pdone"></span><span id="pmin"></span></div></div>'+
-'<div class="tabs" role="tablist" id="tabs">'+L.parts.map(function(p){return '<button class="tab" role="tab" type="button" data-part="'+p[0]+'" id="t-'+p[0]+'" aria-controls="p-'+p[0]+'"><span class="ti">'+svg(p[0])+'</span><span class="tt"><b>'+p[1]+'</b><span>'+p[2]+' min</span></span></button>'}).join('')+'</div>';
+var sd=document.createElement('aside');sd.className='side';sd.innerHTML='<div class="prog"><div class="pbar"><i id="pfill"></i></div><div class="pmeta"><span id="pdone"></span></div></div>'+
+'<div class="tabs" role="tablist" id="tabs">'+L.parts.map(function(p){return '<button class="tab" role="tab" type="button" data-part="'+p[0]+'" id="t-'+p[0]+'" aria-controls="p-'+p[0]+'"><span class="ti">'+svg(p[0])+'</span><span class="tt"><b>'+p[1]+'</b></span></button>'}).join('')+'</div>';
 var lb=$('.lbody');lb.insertBefore(sd,lb.firstChild);
 
-/* drawer */
+
 var dr=document.createElement('div');
 dr.innerHTML='<div class="scrim" id="scrim" hidden></div><aside class="drawer" id="drawer" role="dialog" aria-label="Key words" hidden><button class="x" id="drx" type="button" aria-label="Close">&times;</button><h2>Key words</h2><dl>'+L.words.map(function(w){return '<dt>'+w[0]+'</dt><dd>'+w[1]+'</dd>'}).join('')+'</dl><h3>Watch out</h3>'+L.watch.map(function(w){return '<div class="rm"><b>'+w[0]+'</b><span>'+w[1]+'</span></div>'}).join('')+'</aside>';
 document.body.appendChild(dr);
@@ -37,7 +37,7 @@ var opener=null;
 function drawer(o){$('#drawer').hidden=!o;$('#scrim').hidden=!o;if(o){opener=document.activeElement;$('#drx').focus()}else if(opener)opener.focus()}
 $('#wordsBtn').onclick=function(){drawer(true)};$('#drx').onclick=function(){drawer(false)};$('#scrim').onclick=function(){drawer(false)};
 
-/* board */
+
 var bd=document.createElement('div');bd.className='board';bd.id='board';bd.hidden=true;bd.setAttribute('role','dialog');bd.setAttribute('aria-label','Board view');
 bd.innerHTML='<div><h2>'+esc(L.title)+'</h2><div class="bsub">'+esc(L.sub)+'</div></div><div class="bgrid"><div class="bbox li"><div class="bl">'+svg('target')+'Learning intention</div><div>'+L.li+'</div></div><div class="bbox kqb"><div class="bl">'+svg('ques')+'Key question</div><div>'+esc(L.kq)+'</div></div><div class="bbox tyw"><div class="bl">'+svg('list')+'Today you will</div><ol>'+L.steps.map(function(s){return '<li>'+s+'</li>'}).join('')+'</ol></div></div><div class="bfoot"><div class="bsc" id="bsc" hidden><b>Success criteria</b>'+L.must.map(function(s){return '<span>'+s+'</span>'}).join('')+'</div><div class="toolbtns"><button class="tbtn" id="bscb" type="button">Success criteria</button><button class="tbtn" id="bclose" type="button">Close</button></div></div>';
 document.body.appendChild(bd);
@@ -46,16 +46,16 @@ $('#boardBtn').onclick=function(){board(true)};$('#bclose').onclick=function(){b
 $('#bscb').onclick=function(){var b=$('#bsc');b.hidden=!b.hidden};
 document.addEventListener('keydown',function(e){if(e.key==='Escape'){if(!bd.hidden)board(false);else if(!$('#drawer').hidden)drawer(false)}});
 
-/* tabs and progress */
+
 var ids=L.parts.map(function(p){return p[0]});
-function prog(){var n=ids.filter(function(i){return S.done[i]}).length,m=0;L.parts.forEach(function(p){if(!S.done[p[0]])m+=p[2]});
-$('#pfill').style.width=(100*n/ids.length)+'%';$('#pdone').textContent=n+' of '+ids.length+' parts finished';$('#pmin').textContent=m?'About '+m+' min to go (Core work)':'All parts finished';
+function prog(){var n=ids.filter(function(i){return S.done[i]}).length;
+$('#pfill').style.width=(100*n/ids.length)+'%';$('#pdone').textContent=n+' of '+ids.length+' parts finished';
 ids.forEach(function(i){$('#t-'+i).classList.toggle('done',!!S.done[i])})}
 function show(id,noscroll){S.cur=id;ids.forEach(function(i){var sel=i===id;$('#p-'+i).hidden=!sel;var t=$('#t-'+i);t.setAttribute('aria-selected',sel);t.tabIndex=sel?0:-1});save();prog();if(!noscroll)window.scrollTo({top:0})}
 $$('.tab').forEach(function(t){t.onclick=function(){show(t.dataset.part)};t.onkeydown=function(e){var i=ids.indexOf(t.dataset.part);if((e.key==='ArrowRight'||e.key==='ArrowDown')&&i<ids.length-1){show(ids[i+1],true);$('#t-'+ids[i+1]).focus()}if((e.key==='ArrowLeft'||e.key==='ArrowUp')&&i>0){show(ids[i-1],true);$('#t-'+ids[i-1]).focus()}}});
 $$('[data-finish]').forEach(function(b){b.onclick=function(){var id=b.dataset.finish;S.done[id]=true;var i=ids.indexOf(id);prog();if(i<ids.length-1)show(ids[i+1]);else{var e=$('#endmsg');if(e)e.hidden=false;save()}}});
 
-/* numbered explanation steps */
+
 $$('.steps').forEach(function(box){var st=$$('.step',box),n=st.length,idx=0;var fin=$('[data-needsteps]');
 var nav=document.createElement('div');nav.className='stepnav';nav.innerHTML='<button class="btn" type="button" id="sb">Back</button><span class="dots">'+st.map(function(){return '<i></i>'}).join('')+'</span><button class="btn primary" type="button" id="sn">Next</button>';
 box.parentNode.insertBefore(nav,box.nextSibling);
@@ -63,7 +63,7 @@ st.forEach(function(s,i){var l=document.createElement('div');l.className='stepla
 function go(i,sc){idx=i;st.forEach(function(s,j){s.hidden=j!==i});$$('.dots i',nav).forEach(function(d,j){d.classList.toggle('on',j===i)});$('#sb',nav).disabled=i===0;$('#sn',nav).disabled=i===n-1;if(fin)fin.hidden=!(S.done[fin.dataset.finish]||i===n-1);if(sc)box.scrollIntoView({block:'start'})}
 $('#sb',nav).onclick=function(){go(idx-1,true)};$('#sn',nav).onclick=function(){go(idx+1,true)};go(0)});
 
-/* questions */
+
 var qn=0;
 function setQ(el,v){S.q[el.dataset.qid]=v;save()}
 function parseNum(s){s=String(s).toLowerCase().replace(/[−–]/g,'-').replace(/,/g,'').replace(/\s+/g,'');
@@ -110,7 +110,7 @@ btn.onclick=function(){run(false)};
 var s=S.q[cs.dataset.qid];if(s){cards.forEach(function(c,i){$('select',c).value=s.s[i]||''});if(s.c)run(true)}});
 $$('textarea').forEach(function(t){t.dataset.qid='q'+(qn++);var s=S.q[t.dataset.qid];if(s)t.value=s.v||'';t.oninput=function(){setQ(t,{v:t.value})}});
 
-/* back to the goal */
+
 var gc=$('#goalcheck');if(gc){S.goal=S.goal||{};var crit=L.must.concat(L.more),lv=['Not yet','Getting there','I can do this'];
 gc.innerHTML=crit.map(function(c,i){return '<div class="grow"><p>'+c+'</p><div class="opts" role="group" aria-label="How sure am I">'+lv.map(function(l,k){return '<button class="opt gopt" type="button" data-c="'+i+'" data-k="'+k+'" aria-pressed="'+(S.goal[i]===k)+'">'+l+'</button>'}).join('')+'</div></div>'}).join('');
 $$('.gopt',gc).forEach(function(b){b.onclick=function(){var i=b.dataset.c,k=+b.dataset.k;S.goal[i]=k;save();$$('.gopt[data-c="'+i+'"]',gc).forEach(function(x){x.setAttribute('aria-pressed',String(+x.dataset.k===k))})}})}
