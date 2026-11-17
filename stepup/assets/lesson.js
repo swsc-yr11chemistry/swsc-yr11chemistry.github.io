@@ -70,19 +70,31 @@ function parseNum(s){s=String(s).toLowerCase().replace(/[−–]/g,'-').replace(
 var sup={'⁰':0,'¹':1,'²':2,'³':3,'⁴':4,'⁵':5,'⁶':6,'⁷':7,'⁸':8,'⁹':9};
 s=s.replace(/([x×*]10)(⁻?[⁰¹²³⁴-⁹]+)/,function(m,a,b){var neg=b.charAt(0)==='⁻';var d=b.replace('⁻','').split('').map(function(c){return sup[c]}).join('');return a+'^'+(neg?'-':'')+d});
 var m=s.match(/^([+-]?(?:\d+\.?\d*|\.\d+))(?:e([+-]?\d+)|[x×*]10\^?\(?([+-]?\d+)\)?)?/);if(!m)return null;
-var v=parseFloat(m[1]),ex=m[2]!==undefined?m[2]:m[3];if(ex!==undefined)v*=Math.pow(10,parseInt(ex,10));return{v:v,rest:s.slice(m[0].length)}}
+var v=parseFloat(m[1]),ex=m[2]!==undefined?m[2]:m[3];if(ex!==undefined)v*=Math.pow(10,parseInt(ex,10));return{v:v,rest:s.slice(m[0].length),mant:m[1]}}
 function nu(s){return String(s).toLowerCase().replace(/[µμ]/g,'u').replace(/³/g,'3').replace(/\s+/g,'')}
-function near(a,b){return Math.abs(a-b)<=Math.abs(b)*0.001+1e-15}
+function near(a,b,t){return Math.abs(a-b)<=Math.abs(b)*(t||0.001)+1e-15}
+function sfOf(m){m=m.replace(/^[+-]/,'');var d;if(m.indexOf('.')>-1){d=m.replace('.','').replace(/^0+/,'')}else{d=m.replace(/^0+/,'').replace(/0+$/,'')}return d.length||1}
 $$('.numq').forEach(function(q){q.dataset.qid='q'+(qn++);var inp=$('input',q),fb=$('.fb',q),rv=$('.reveal',q);
 function chk(silent){var raw=inp.value;if(!raw.trim()){fb.hidden=false;fb.className='fb info';fb.innerHTML='Type your answer first.';return}
 var p=parseNum(raw),want=parseFloat(q.dataset.num),msg,ok=false;
 if(!p){msg='<b>Check the number.</b> Write your answer as a number, for example 2500 or 0.0025.'}
-else if(near(p.v,want)){ok=true;var u=q.dataset.unit;if(u&&nu(p.rest).indexOf(nu(u))<0)msg='<b>Right number.</b> Remember to write the unit ('+esc(u)+').';else msg='<b>Correct.</b> Compare your working with the worked answer below.'}
+else if(near(p.v,want,parseFloat(q.dataset.tol))){var sf=q.dataset.sf;if(sf&&sfOf(p.mant)!==+sf){fb.hidden=false;fb.className='fb info';fb.innerHTML='<b>Right value, but check the figures.</b> Give your answer to '+sf+' significant figures.';rv.hidden=false;if(!silent)setQ(q,{v:raw,c:1});return}ok=true;var u=q.dataset.unit;if(u&&nu(p.rest).indexOf(nu(u))<0)msg='<b>Right number.</b> Remember to write the unit ('+esc(u)+').';else msg='<b>Correct.</b> Compare your working with the worked answer below.'}
 else{msg='<b>Not quite.</b> '+(q.dataset.hint||'Check which unit is bigger, then see the worked answer below.');
-if(q.dataset.traps){try{var t=JSON.parse(q.dataset.traps);for(var k in t){if(near(p.v,parseFloat(k))){msg='<b>Not quite.</b> '+t[k];break}}}catch(e){}}}
+if(q.dataset.traps){try{var t=JSON.parse(q.dataset.traps);for(var k in t){if(near(p.v,parseFloat(k),parseFloat(q.dataset.tol))){msg='<b>Not quite.</b> '+t[k];break}}}catch(e){}}}
 fb.hidden=false;fb.className='fb '+(ok?'ok':'no');fb.innerHTML=msg;rv.hidden=false;if(!silent)setQ(q,{v:raw,c:1})}
 $('.chk',q).onclick=function(){chk(false)};inp.onkeydown=function(e){if(e.key==='Enter')chk(false)};
 var s=S.q[q.dataset.qid];if(s){inp.value=s.v||'';if(s.c)chk(true)}});
+
+$$('.coefq').forEach(function(q){q.dataset.qid='q'+(qn++);var ins=$$('input.cf',q),fb=$('.fb',q),rv=$('.reveal',q),want=q.dataset.ans.split(',').map(Number);
+function chk(silent){var got=ins.map(function(i){var v=i.value.trim();return v===''?1:parseInt(v,10)});fb.hidden=false;
+if(got.some(function(g){return !(g>0)})){fb.className='fb info';fb.innerHTML='Use whole numbers only. Leave a box empty if the number is 1.';return}
+var same=got.every(function(g,i){return g===want[i]}),k=got[0]/want[0],mult=got.every(function(g,i){return Math.abs(g-want[i]*k)<1e-9});
+if(same){fb.className='fb ok';fb.innerHTML='<b>Balanced.</b> Check your atom count against the worked answer below.'}
+else if(mult){fb.className='fb info';fb.innerHTML='<b>Balanced, but not in the lowest whole numbers.</b> Divide every number by the same amount.'}
+else{fb.className='fb no';fb.innerHTML='<b>Not balanced yet.</b> Count each type of atom on both sides again.'}
+rv.hidden=false;if(!silent)setQ(q,{v:ins.map(function(i){return i.value}),c:1})}
+$('.chk',q).onclick=function(){chk(false)};
+var s=S.q[q.dataset.qid];if(s){ins.forEach(function(i,j){i.value=(s.v||[])[j]||''});if(s.c)chk(true)}});
 function scoreUpdate(){var s=$('#score');if(!s)return;var all=$$('#p-check .mcq'),ok=all.filter(function(m){return m.classList.contains('got')}).length,ans=all.filter(function(m){return m.dataset.done}).length;s.hidden=!ans;s.textContent='You have answered '+ans+' of '+all.length+' and got '+ok+' right.'}
 $$('.mcq').forEach(function(q){q.dataset.qid='q'+(qn++);var fb=$('.fb',q),rv=$('.reveal',q),opts=$$('.opt',q);
 function pick(i,silent){var o=opts[i],right=o.hasAttribute('data-right');q.dataset.done=1;opts.forEach(function(x){x.disabled=true;if(x.hasAttribute('data-right'))x.classList.add('right')});o.setAttribute('aria-pressed','true');
