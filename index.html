@@ -3,7 +3,7 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Spectral:ital,wght@0,400;0,600;1,400&display=swap">
 <style>
 
 :root{
@@ -308,6 +308,41 @@ details.opts[open]>summary::after{content:" ▴"}
 #sachead.stlab{font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 -4px;display:flex;flex-wrap:wrap;gap:4px 10px;align-items:baseline}
 #sachead.stlab span{font-family:var(--body);font-size:13px;letter-spacing:0;text-transform:none;color:var(--faint)}
 @media (max-width:640px){.sacstrip{grid-template-columns:repeat(2,minmax(0,1fr))}.hwline{flex-direction:column;gap:2px}details.opts{justify-self:stretch}details.opts>summary{text-align:left}}
+</style>
+<style>
+:root{--bg:#eef2f5;--surface:#ffffff;--ink:#1c2630;--muted:#52606d;--faint:#7a8793;--line:#d6dee5;--tint:#f2f5f8;--accent:#0f5f6b;--accent-soft:#dfeef0;--tomato:#d9472f;--display:"Spectral",Georgia,serif;--body:"IBM Plex Sans",ui-sans-serif,system-ui,sans-serif;--mono:"IBM Plex Sans",ui-sans-serif,system-ui,sans-serif}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#151d26;--surface:#1e2934;--ink:#eef3f6;--muted:#aab7c3;--faint:#8593a0;--line:#33424f;--tint:#25333f;--accent:#5cc8cc;--accent-soft:#1f3c43;--tomato:#ff7d61;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#151d26;--surface:#1e2934;--ink:#eef3f6;--muted:#aab7c3;--faint:#8593a0;--line:#33424f;--tint:#25333f;--accent:#5cc8cc;--accent-soft:#1f3c43;--tomato:#ff7d61;color-scheme:dark}
+.eyebrow,
+.next .lab,
+.term .lab,
+.flab,
+.cov h4,
+.nw .lab,
+.phead,
+.cal .th,
+.hwlab,
+.hwl,
+.astag,
+.hwlab2,
+#sachead.stlab{text-transform:none!important;letter-spacing:0!important;font-weight:600}
+.next,
+.stripwrap,
+details.term-d,
+.nw,
+.pacebox,
+.calbox,
+.sackk{border-radius:6px}
+h1,h2,summary .tn,.next .big,.nw .big{font-family:var(--display);font-weight:600;color:var(--accent)}
+h1{font-size:clamp(32px,5vw,44px);line-height:1.1}
+header{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:24px clamp(18px,3vw,30px);position:relative;overflow:hidden}
+header::after{content:"11";position:absolute;right:24px;top:-34px;font-family:var(--display);font-weight:600;font-size:200px;line-height:1;color:var(--tint);pointer-events:none}
+header>*{position:relative;z-index:1}
+header .eyebrow{color:var(--tomato);font-size:14px}
+header .lede{font-family:var(--display);font-style:italic;font-size:17px;color:var(--ink)}
+@media (max-width:640px){header::after{font-size:130px;top:-16px}}
+.vtabs button[aria-selected="true"]{color:var(--accent);border-bottom-color:var(--tomato)}
+.items a{color:var(--accent);font-weight:600}
 </style>
 
 <div class="wrap">
