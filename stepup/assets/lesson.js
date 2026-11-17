@@ -24,7 +24,7 @@ var h='<div class="toprow"><a class="tbtn back" href="'+(L.outline||'../../')+'"
 '<div class="hero"><div class="txt"><div class="eyebrow">'+esc(L.eyebrow)+'</div><h1>'+esc(L.title)+'</h1><div class="sub">'+esc(L.sub)+'</div><div class="kq">'+svg('ques')+'<span>'+esc(L.kq)+'</span></div></div>'+L.art+'</div>'+
 '<div class="hgrid"><div class="hbox"><div class="lab">'+svg('list')+'Today you will</div><ol>'+L.steps.map(function(s){return '<li>'+s+'</li>'}).join('')+'</ol></div>'+
 '<div class="hbox"><div class="lab">'+svg('target')+'Learning intention</div><p>'+L.li+'</p><div class="lab" style="margin-top:6px">Success criteria</div><ul>'+L.must.map(function(s){return '<li>'+s+'</li>'}).join('')+'</ul><details><summary>Show the Should and Could criteria</summary><ul>'+L.more.map(function(s){return '<li>'+s+'</li>'}).join('')+'</ul></details></div></div>';
-$('#head').innerHTML=h;
+$('#head').innerHTML=h;$('.hero').setAttribute('data-n',L.num||'');
 var sd=document.createElement('aside');sd.className='side';sd.innerHTML='<div class="prog"><div class="pbar"><i id="pfill"></i></div><div class="pmeta"><span id="pdone"></span><span id="pmin"></span></div></div>'+
 '<div class="tabs" role="tablist" id="tabs">'+L.parts.map(function(p){return '<button class="tab" role="tab" type="button" data-part="'+p[0]+'" id="t-'+p[0]+'" aria-controls="p-'+p[0]+'"><span class="ti">'+svg(p[0])+'</span><span class="tt"><b>'+p[1]+'</b><span>'+p[2]+' min</span></span></button>'}).join('')+'</div>';
 var lb=$('.lbody');lb.insertBefore(sd,lb.firstChild);
