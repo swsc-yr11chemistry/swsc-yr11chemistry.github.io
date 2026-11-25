@@ -7,8 +7,10 @@
 :root{--bg:#eef2f5;--surface:#fff;--ink:#1c2630;--muted:#52606d;--line:#d6dee5;--tint:#f2f5f8;--acc:#0f5f6b;--acc2:#d9472f;
 --teal:#0f5f6b;--teal-soft:#dfeef0;--orange:#d9472f;--orange-soft:#fce8e3;--purple:#6d3fc7;--purple-soft:#ece3fb;--good:#1f7a3d;--good-soft:#dff2e5;
 --display:"Spectral",Georgia,serif;--body:"IBM Plex Sans",system-ui,sans-serif;color-scheme:light}
-@media (prefers-color-scheme:dark){:root{--bg:#151d26;--surface:#1e2934;--ink:#eef3f6;--muted:#aab7c3;--line:#33424f;--tint:#25333f;--acc:#5cc8cc;--acc2:#ff7d61;
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#151d26;--surface:#1e2934;--ink:#eef3f6;--muted:#aab7c3;--line:#33424f;--tint:#25333f;--acc:#5cc8cc;--acc2:#ff7d61;
 --teal:#5cc8cc;--teal-soft:#1f3c43;--orange:#ff7d61;--orange-soft:#43281f;--purple:#c2a6ff;--purple-soft:#36295e;--good:#7fd69a;--good-soft:#163222;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#151d26;--surface:#1e2934;--ink:#eef3f6;--muted:#aab7c3;--line:#33424f;--tint:#25333f;--acc:#5cc8cc;--acc2:#ff7d61;
+--teal:#5cc8cc;--teal-soft:#1f3c43;--orange:#ff7d61;--orange-soft:#43281f;--purple:#c2a6ff;--purple-soft:#36295e;--good:#7fd69a;--good-soft:#163222;color-scheme:dark}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.5}
@@ -135,7 +137,7 @@ select{appearance:none;-webkit-appearance:none}
 .printonly{display:block}
 .sec.s6{break-after:auto}
 }
-</style></head>
+</style><script src="../../assets/theme.js?v=1"></script></head>
 <body><form class="wrap" id="f" autocomplete="off">
 <div class="toprow"><a class="btn" href="../../"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>Course outline</a>
 <div class="r"><a class="btn" href="getting-to-know-you.pdf" download><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 9V3h10v6M7 17H5a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-2M7 14h10v7H7z"/></svg>Blank copy to print</a>
