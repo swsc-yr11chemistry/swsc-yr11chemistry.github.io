@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en-AU"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="robots" content="noindex,nofollow">
+<title>Getting to know you</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,600;0,700;1,400&family=Spectral:ital,wght@0,400;0,600;1,400&display=swap">
+<style>
+:root{--bg:#eef2f5;--surface:#fff;--ink:#1c2630;--muted:#52606d;--line:#d6dee5;--tint:#f2f5f8;--acc:#0f5f6b;--acc2:#d9472f;
+--teal:#0f5f6b;--teal-soft:#dfeef0;--orange:#d9472f;--orange-soft:#fce8e3;--purple:#6d3fc7;--purple-soft:#ece3fb;--good:#1f7a3d;--good-soft:#dff2e5;
+--display:"Spectral",Georgia,serif;--body:"IBM Plex Sans",system-ui,sans-serif;color-scheme:light}
+@media (prefers-color-scheme:dark){:root{--bg:#151d26;--surface:#1e2934;--ink:#eef3f6;--muted:#aab7c3;--line:#33424f;--tint:#25333f;--acc:#5cc8cc;--acc2:#ff7d61;
+--teal:#5cc8cc;--teal-soft:#1f3c43;--orange:#ff7d61;--orange-soft:#43281f;--purple:#c2a6ff;--purple-soft:#36295e;--good:#7fd69a;--good-soft:#163222;color-scheme:dark}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.5}
+h1,h2{font-family:var(--display);color:var(--acc);margin:0;line-height:1.15}
+.wrap{max-width:900px;margin:0 auto;padding:22px max(16px,env(safe-area-inset-left)) 120px;display:grid;gap:18px}
+.toprow{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.toprow .r{display:flex;gap:10px;flex-wrap:wrap}
+.btn{appearance:none;display:inline-flex;align-items:center;gap:8px;border:2px solid var(--line);background:var(--surface);color:var(--ink);border-radius:10px;padding:8px 14px;font:700 15px var(--body);cursor:pointer;text-decoration:none}
+.btn:hover{border-color:var(--muted)}
+.btn.primary{background:var(--acc);border-color:var(--acc);color:var(--surface)}
+.ico{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:22px clamp(18px,3vw,30px)}
+.hero{position:relative;overflow:hidden}
+.hero .big{position:absolute;right:24px;top:-34px;font-family:var(--display);font-weight:600;font-size:190px;line-height:1;color:var(--tint);pointer-events:none}
+.hero .eyebrow{position:relative;color:var(--acc2);font-weight:700;font-size:15px;margin:0 0 6px}
+.hero h1{position:relative;font-size:clamp(30px,5vw,42px)}
+.hero .sub{position:relative;font-family:var(--display);font-style:italic;font-size:19px;color:var(--muted);margin:8px 0 0;max-width:46ch}
+.ids{display:grid;grid-template-columns:2fr 1.2fr 1fr;gap:12px;margin-top:18px;position:relative}
+.ids label{display:grid;gap:4px;font-weight:600;font-size:14px;color:var(--muted)}
+.ids label i{font-weight:400;font-style:normal}
+.ids label{white-space:nowrap}
+.how{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.how div{background:var(--tint);border-radius:6px;padding:12px 14px;font-size:15.5px}
+.how b{display:flex;align-items:center;gap:8px;color:var(--acc);font-size:16px;margin-bottom:4px}
+.how b i{font-style:normal;display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--acc);color:var(--surface);font-size:13px}
+.note{display:flex;gap:10px;align-items:flex-start;border-left:4px solid var(--acc);background:var(--teal-soft);border-radius:4px;padding:10px 14px;margin:14px 0 0;font-size:15.5px}
+.note .ico{color:var(--acc);margin-top:2px}
+.sh{display:flex;align-items:baseline;gap:12px;border-bottom:2px solid var(--sc);padding-bottom:6px;margin-bottom:16px}
+.sn{font-family:var(--display);font-weight:600;font-size:28px;color:var(--acc2)}
+.sh h2{font-size:26px}
+.block{margin:0 0 22px}.block:last-child{margin-bottom:0}
+.qt{font-weight:700;margin:0 0 2px}
+.qt .n{display:inline-block;min-width:40px;color:var(--acc2)}
+.optl{font-weight:400;color:var(--muted)}
+.hint{margin:0 0 8px 40px;color:var(--muted);font-size:15px}
+.qt+.line,.qt+.area,.hint+.line,.hint+.area,.hint+.opts,.hint+table,.hint+.scalewrap,.hint+.pick,.block>.pick{margin-left:40px}
+input.line,textarea.area,select,.otxt{font:inherit;font-size:16px;color:var(--ink);background:var(--tint);border:2px solid var(--line);border-radius:6px;padding:8px 11px;width:calc(100% - 40px)}
+td input.line,.pick input.line{width:100%}
+.ids input.line{width:100%;background:var(--surface)}
+input.line.short{max-width:140px}
+textarea.area{resize:vertical;min-height:72px;display:block;overflow:hidden}
+input:focus,textarea:focus,select:focus{outline:none;border-color:var(--acc);background:var(--surface)}
+.opts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.opts.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.opt{display:flex;align-items:center;gap:10px;border:2px solid var(--line);border-radius:6px;padding:8px 12px;cursor:pointer;background:var(--surface);min-height:46px}
+.opt:hover{border-color:var(--muted)}
+.opt input[type=checkbox],.opt input[type=radio],.tick input{width:20px;height:20px;accent-color:var(--acc);flex:none;margin:0}
+.opt:has(input:checked){border-color:var(--sc);background:var(--scs)}
+.opt.dis{opacity:.5;cursor:not-allowed}
+.opt.other{flex-wrap:wrap}
+.opt .otxt{flex:1;min-width:120px;width:auto;padding:4px 8px}
+.maxmsg{margin:8px 0 0 40px;color:var(--acc2);font-size:15px;font-weight:600}
+table{border-collapse:collapse}
+.subj{width:calc(100% - 40px)}
+.subj th,.subj td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--line)}
+.subj th{font-size:14px;background:var(--tint);font-weight:700}
+.subj .c{text-align:center;width:110px}
+.subj .opt{border:0;padding:4px 0;min-height:0;background:none}
+.tick{display:inline-flex;padding:8px;cursor:pointer}
+.scalewrap{overflow-x:auto}
+.scale{width:100%;min-width:560px}
+.scale th{font-size:13.5px;font-weight:700;background:var(--tint);padding:6px 4px;text-align:center;line-height:1.25}
+.scale th span{font-weight:400;color:var(--muted)}
+.scale th:first-child{text-align:left;padding-left:12px}
+.scale td{border-bottom:1px solid var(--line);padding:5px 4px}
+.scale td:first-child{padding-left:12px}
+.scale td.dot{text-align:center;width:66px}
+.dot label{display:inline-grid;cursor:pointer}
+.dot input{position:absolute;opacity:0;width:1px;height:1px}
+.dot span{display:inline-grid;place-items:center;width:36px;height:36px;border-radius:50%;border:2px solid var(--sc);color:var(--sc);font-weight:700}
+.dot input:checked+span{background:var(--sc);color:var(--surface)}
+.dot input:focus-visible+span{outline:3px solid var(--acc2);outline-offset:2px}
+.pick{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:10px;margin-bottom:10px}
+.pick select{width:100%}
+.done{display:grid;gap:12px;justify-items:start}
+.done h2{font-size:24px}
+.done p{margin:0}
+.done .row{display:flex;gap:10px;flex-wrap:wrap}
+.msg{font-weight:600;color:var(--acc2)}
+.msg.ok{color:var(--good)}
+.paperline{font-size:15px;color:var(--muted)}
+.paperline a{color:var(--acc);font-weight:700}
+.printonly{display:none}
+@media (max-width:700px){.ids,.how{grid-template-columns:1fr}.opts,.opts.three{grid-template-columns:1fr}.pick{grid-template-columns:1fr}
+.hint{margin-left:0}.qt .n{min-width:34px}.qt+.line,.qt+.area,.hint+.line,.hint+.area,.hint+.opts,.hint+table,.hint+.scalewrap,.hint+.pick,.block>.pick{margin-left:0}
+input.line,textarea.area,.subj{width:100%}.hero .big{font-size:130px}}
+
+@media print{
+@page{size:A4;margin:11mm 12mm}
+:root{--bg:#fff;--surface:#fff;--ink:#1c2630;--muted:#52606d;--line:#c9d1d9;--tint:#f2f5f8;--acc:#0f5f6b;--acc2:#d9472f;--teal:#0f5f6b;--teal-soft:#dfeef0;--orange:#d9472f;--orange-soft:#fce8e3;--purple:#6d3fc7;--purple-soft:#ece3fb;color-scheme:light}
+*{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+body{font-size:10.5pt;background:#fff}
+.wrap{padding:0;gap:10px;max-width:none}
+.toprow,.how,.done,.paperline,.noprint{display:none!important}
+.card{border:0;padding:0}
+.hero{background:var(--tint);border-left:6px solid var(--acc2);border-radius:8px;padding:14px 18px}
+.hero .big{font-size:120pt;top:-30px;right:18px;color:#dce2e8}
+.hero h1{font-size:24pt}.hero .sub{font-size:11pt}
+.ids{margin-top:10px}
+.note{font-size:9.5pt;margin-top:8px}
+.sec{margin-top:6px}
+.sh{border-bottom-color:var(--acc);margin-bottom:8px;break-after:avoid}
+.sn{font-size:16pt}.sh h2{font-size:14pt}
+.block{break-inside:avoid;margin-bottom:10px}
+.hint{font-size:9pt;margin-bottom:4px}
+.qt .n{min-width:30px}.hint{margin-left:30px}
+.qt+.line,.qt+.area,.hint+.line,.hint+.area,.hint+.opts,.hint+table,.hint+.scalewrap,.hint+.pick,.block>.pick{margin-left:30px}
+input.line,textarea.area,select,.otxt{font-size:10pt;background:#fff;border:0;border-bottom:1.2px solid var(--line);border-radius:0;padding:3px 2px;width:calc(100% - 30px)}
+td input.line,.pick input.line,.ids input.line{width:100%}
+.ids input.line{border:1.4px solid var(--line);border-radius:6px;padding:4px 8px}
+textarea.area{min-height:0;resize:none}
+select{appearance:none;-webkit-appearance:none}
+.opts{gap:3px 14px}
+.opt{border:0;padding:1px 0;min-height:0;background:none!important}
+.opt input[type=checkbox],.opt input[type=radio],.tick input{width:13px;height:13px}
+.scale{min-width:0}
+.scale td{padding:2px 4px}.scale td.dot{width:54px}
+.dot span{width:20px;height:20px;font-size:8.5pt;border-width:1.4px}
+.subj{width:calc(100% - 30px)}
+.subj td,.subj th{padding:3px 8px}
+.tick{padding:2px}
+.maxmsg{display:none!important}
+.opt.dis{opacity:1}
+.printonly{display:block}
+.sec.s6{break-after:auto}
+}
+</style></head>
+<body><form class="wrap" id="f" autocomplete="off">
+<div class="toprow"><a class="btn" href="../../"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>Course outline</a>
+<div class="r"><a class="btn" href="getting-to-know-you.pdf" download><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 9V3h10v6M7 17H5a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-2M7 14h10v7H7z"/></svg>Blank copy to print</a>
+<button class="btn primary" type="button" data-pdf><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M12 12v6M9.5 15.5L12 18l2.5-2.5"/></svg>Save as PDF</button></div></div>
+
+<section class="card hero"><div class="big">11</div>
+<p class="eyebrow">Year 11 Chemistry · Step-Up</p>
+<h1>Getting to know you</h1>
+<p class="sub">This sheet helps me learn how you study, what you're aiming for and what you enjoy, so I can support you well next year.</p>
+<div class="ids"><label><span class="lt">Full name</span><input class="line" id="fullname" type="text" name="full_name"></label>
+<label><span class="lt">Homegroup <i>(if known)</i></span><input class="line" type="text" name="homegroup"></label>
+<label><span class="lt">Date</span><input class="line" type="text" name="date" placeholder="e.g. 26 Nov"></label></div>
+<p class="note"><span><b>Share only what you're comfortable with.</b> You can skip any question, and only I will read your answers. It should take about 15 minutes.</span></p>
+</section>
+
+<section class="card noprint"><div class="how">
+<div><b><i>1</i>Fill it in</b>Answer the questions on this page. Your answers are kept on this device, so you can come back later.</div>
+<div><b><i>2</i>Save as PDF</b>Press <b style="display:inline;color:inherit">Save as PDF</b> at the top or bottom. In the print window, choose Save as PDF as the printer.</div>
+<div><b><i>3</i>Email it to me</b>Attach the PDF to an email and send it to me from your school account.</div>
+</div>
+<p class="note"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><span>Your answers are not sent anywhere when you type them. I only see them when you email me the PDF. On an iPad, press Save as PDF, then tap the share button in the print window and choose Save to Files.</span></p>
+</section>
+
+<section class="card sec s1" style="--sc:var(--teal);--scs:var(--teal-soft)"><div class="sh"><span class="sn">1</span><h2>About you</h2></div><div class="block"><p class="qt"><span class="n">1.1</span>What name would you like me to use in class?</p><input class="line" type="text" name="pref_name" aria-label="Your answer"></div><div class="block"><p class="qt"><span class="n">1.2</span>Apart from Chemistry, what VCE subjects are you doing next year?</p><p class="hint">Write each subject. Tick the box if it is a Unit 3/4 subject.</p><table class="subj"><thead><tr><th>Subject</th><th class="c">Unit 3/4?</th></tr></thead><tbody><tr><td><input class="line" type="text" name="subj_1" aria-label="Subject 1"></td><td class="c"><label class="tick"><input type="checkbox" name="subj_1_u34" value="yes" aria-label="Subject 1 is a Unit 3/4 subject"></label></td></tr><tr><td><input class="line" type="text" name="subj_2" aria-label="Subject 2"></td><td class="c"><label class="tick"><input type="checkbox" name="subj_2_u34" value="yes" aria-label="Subject 2 is a Unit 3/4 subject"></label></td></tr><tr><td><input class="line" type="text" name="subj_3" aria-label="Subject 3"></td><td class="c"><label class="tick"><input type="checkbox" name="subj_3_u34" value="yes" aria-label="Subject 3 is a Unit 3/4 subject"></label></td></tr><tr><td><input class="line" type="text" name="subj_4" aria-label="Subject 4"></td><td class="c"><label class="tick"><input type="checkbox" name="subj_4_u34" value="yes" aria-label="Subject 4 is a Unit 3/4 subject"></label></td></tr><tr><td><input class="line" type="text" name="subj_5" aria-label="Subject 5"></td><td class="c"><label class="tick"><input type="checkbox" name="subj_5_u34" value="yes" aria-label="Subject 5 is a Unit 3/4 subject"></label></td></tr></tbody></table></div></section><section class="card sec s2" style="--sc:var(--orange);--scs:var(--orange-soft)"><div class="sh"><span class="sn">2</span><h2>You and Chemistry</h2></div><div class="block"><p class="qt"><span class="n">2.1</span>Why did you choose Chemistry?</p><p class="hint">Tick all that apply.</p><div class="opts "><label class="opt"><input type="checkbox" name="why" value="I enjoy science"><span>I enjoy science</span></label><label class="opt"><input type="checkbox" name="why" value="I need it for a course or career"><span>I need it for a course or career</span></label><label class="opt"><input type="checkbox" name="why" value="I was good at it in Year 10"><span>I was good at it in Year 10</span></label><label class="opt"><input type="checkbox" name="why" value="Someone suggested it"><span>Someone suggested it</span></label><label class="opt"><input type="checkbox" name="why" value="I&#x27;m keeping my options open"><span>I'm keeping my options open</span></label><label class="opt other"><input type="checkbox" name="why" value="Other"><span>Other</span><input class="otxt" type="text" name="why_other" aria-label="Other, please say what"></label></div></div><div class="block"><p class="qt"><span class="n">2.2</span>What did you enjoy most in science this year, and why?</p><textarea class="area" name="enjoy" rows="2" aria-label="Your answer"></textarea></div><div class="block"><p class="qt"><span class="n">2.3</span>What did you find hardest in science this year?</p><textarea class="area" name="hardest" rows="2" aria-label="Your answer"></textarea></div><div class="block"><p class="qt"><span class="n">2.4</span>How confident do you feel with these skills right now?</p><p class="hint">Choose one number for each skill. 1 means "not confident yet" and 5 means "very confident".</p><div class="scalewrap"><table class="scale"><thead><tr><th>Skill</th><th>1<br><span>Not yet</span></th><th>2</th><th>3</th><th>4</th><th>5<br><span>Very</span></th></tr></thead><tbody><tr><td>Converting units</td><td class="dot"><label><input type="radio" name="skill_1" value="1" aria-label="Converting units: 1"><span>1</span></label></td><td class="dot"><label><input type="radio" name="skill_1" value="2" aria-label="Converting units: 2"><span>2</span></label></td><td class="dot"><label><input type="radio" name="skill_1" value="3" aria-label="Converting units: 3"><span>3</span></label></td><td class="dot"><label><input type="radio" name="skill_1" value="4" aria-label="Converting units: 4"><span>4</span></label></td><td class="dot"><label><input type="radio" name="skill_1" value="5" aria-label="Converting units: 5"><span>5</span></label></td></tr><tr><td>Rearranging a formula to find an unknown</td><td class="dot"><label><input type="radio" name="skill_2" value="1" aria-label="Rearranging a formula to find an unknown: 1"><span>1</span></label></td><td class="dot"><label><input type="radio" name="skill_2" value="2" aria-label="Rearranging a formula to find an unknown: 2"><span>2</span></label></td><td class="dot"><label><input type="radio" name="skill_2" value="3" aria-label="Rearranging a formula to find an unknown: 3"><span>3</span></label></td><td class="dot"><label><input type="radio" name="skill_2" value="4" aria-label="Rearranging a formula to find an unknown: 4"><span>4</span></label></td><td class="dot"><label><input type="radio" name="skill_2" value="5" aria-label="Rearranging a formula to find an unknown: 5"><span>5</span></label></td></tr><tr><td>Writing ionic formulas</td><td class="dot"><label><input type="radio" name="skill_3" value="1" aria-label="Writing ionic formulas: 1"><span>1</span></label></td><td class="dot"><label><input type="radio" name="skill_3" value="2" aria-label="Writing ionic formulas: 2"><span>2</span></label></td><td class="dot"><label><input type="radio" name="skill_3" value="3" aria-label="Writing ionic formulas: 3"><span>3</span></label></td><td class="dot"><label><input type="radio" name="skill_3" value="4" aria-label="Writing ionic formulas: 4"><span>4</span></label></td><td class="dot"><label><input type="radio" name="skill_3" value="5" aria-label="Writing ionic formulas: 5"><span>5</span></label></td></tr><tr><td>Balancing chemical equations</td><td class="dot"><label><input type="radio" name="skill_4" value="1" aria-label="Balancing chemical equations: 1"><span>1</span></label></td><td class="dot"><label><input type="radio" name="skill_4" value="2" aria-label="Balancing chemical equations: 2"><span>2</span></label></td><td class="dot"><label><input type="radio" name="skill_4" value="3" aria-label="Balancing chemical equations: 3"><span>3</span></label></td><td class="dot"><label><input type="radio" name="skill_4" value="4" aria-label="Balancing chemical equations: 4"><span>4</span></label></td><td class="dot"><label><input type="radio" name="skill_4" value="5" aria-label="Balancing chemical equations: 5"><span>5</span></label></td></tr><tr><td>Mole calculations (mass to moles, mass to mass)</td><td class="dot"><label><input type="radio" name="skill_5" value="1" aria-label="Mole calculations (mass to moles, mass to mass): 1"><span>1</span></label></td><td class="dot"><label><input type="radio" name="skill_5" value="2" aria-label="Mole calculations (mass to moles, mass to mass): 2"><span>2</span></label></td><td class="dot"><label><input type="radio" name="skill_5" value="3" aria-label="Mole calculations (mass to moles, mass to mass): 3"><span>3</span></label></td><td class="dot"><label><input type="radio" name="skill_5" value="4" aria-label="Mole calculations (mass to moles, mass to mass): 4"><span>4</span></label></td><td class="dot"><label><input type="radio" name="skill_5" value="5" aria-label="Mole calculations (mass to moles, mass to mass): 5"><span>5</span></label></td></tr><tr><td>Reading values and trends from a graph</td><td class="dot"><label><input type="radio" name="skill_6" value="1" aria-label="Reading values and trends from a graph: 1"><span>1</span></label></td><td class="dot"><label><input type="radio" name="skill_6" value="2" aria-label="Reading values and trends from a graph: 2"><span>2</span></label></td><td class="dot"><label><input type="radio" name="skill_6" value="3" aria-label="Reading values and trends from a graph: 3"><span>3</span></label></td><td class="dot"><label><input type="radio" name="skill_6" value="4" aria-label="Reading values and trends from a graph: 4"><span>4</span></label></td><td class="dot"><label><input type="radio" name="skill_6" value="5" aria-label="Reading values and trends from a graph: 5"><span>5</span></label></td></tr><tr><td>Judging accuracy and validity in an experiment</td><td class="dot"><label><input type="radio" name="skill_7" value="1" aria-label="Judging accuracy and validity in an experiment: 1"><span>1</span></label></td><td class="dot"><label><input type="radio" name="skill_7" value="2" aria-label="Judging accuracy and validity in an experiment: 2"><span>2</span></label></td><td class="dot"><label><input type="radio" name="skill_7" value="3" aria-label="Judging accuracy and validity in an experiment: 3"><span>3</span></label></td><td class="dot"><label><input type="radio" name="skill_7" value="4" aria-label="Judging accuracy and validity in an experiment: 4"><span>4</span></label></td><td class="dot"><label><input type="radio" name="skill_7" value="5" aria-label="Judging accuracy and validity in an experiment: 5"><span>5</span></label></td></tr><tr><td>Explaining an idea in writing</td><td class="dot"><label><input type="radio" name="skill_8" value="1" aria-label="Explaining an idea in writing: 1"><span>1</span></label></td><td class="dot"><label><input type="radio" name="skill_8" value="2" aria-label="Explaining an idea in writing: 2"><span>2</span></label></td><td class="dot"><label><input type="radio" name="skill_8" value="3" aria-label="Explaining an idea in writing: 3"><span>3</span></label></td><td class="dot"><label><input type="radio" name="skill_8" value="4" aria-label="Explaining an idea in writing: 4"><span>4</span></label></td><td class="dot"><label><input type="radio" name="skill_8" value="5" aria-label="Explaining an idea in writing: 5"><span>5</span></label></td></tr></tbody></table></div></div></section><section class="card sec s3" style="--sc:var(--purple);--scs:var(--purple-soft)"><div class="sh"><span class="sn">3</span><h2>How you learn</h2></div><div class="block"><p class="qt"><span class="n">3.1</span>In class, I learn best when…</p><p class="hint">Tick up to three.</p><div class="opts " data-max="3"><label class="opt"><input type="checkbox" name="learn" value="the teacher explains it on the board"><span>the teacher explains it on the board</span></label><label class="opt"><input type="checkbox" name="learn" value="I see a worked example first"><span>I see a worked example first</span></label><label class="opt"><input type="checkbox" name="learn" value="I do a hands-on practical"><span>I do a hands-on practical</span></label><label class="opt"><input type="checkbox" name="learn" value="I work with a partner or group"><span>I work with a partner or group</span></label><label class="opt"><input type="checkbox" name="learn" value="I work quietly through questions"><span>I work quietly through questions</span></label><label class="opt"><input type="checkbox" name="learn" value="we discuss it as a class"><span>we discuss it as a class</span></label><label class="opt"><input type="checkbox" name="learn" value="I watch a video or animation"><span>I watch a video or animation</span></label></div><p class="maxmsg" hidden>You have ticked three. Untick one to choose a different one.</p></div><div class="block"><p class="qt"><span class="n">3.2</span>When you study at home, what do you usually do?</p><p class="hint">Tick all that apply.</p><div class="opts "><label class="opt"><input type="checkbox" name="study" value="Reread my notes"><span>Reread my notes</span></label><label class="opt"><input type="checkbox" name="study" value="Rewrite or summarise notes"><span>Rewrite or summarise notes</span></label><label class="opt"><input type="checkbox" name="study" value="Make flashcards"><span>Make flashcards</span></label><label class="opt"><input type="checkbox" name="study" value="Do practice questions"><span>Do practice questions</span></label><label class="opt"><input type="checkbox" name="study" value="Watch videos"><span>Watch videos</span></label><label class="opt"><input type="checkbox" name="study" value="Explain it to someone else"><span>Explain it to someone else</span></label><label class="opt"><input type="checkbox" name="study" value="Study with friends"><span>Study with friends</span></label><label class="opt"><input type="checkbox" name="study" value="I don&#x27;t have a routine yet"><span>I don't have a routine yet</span></label></div></div><div class="block"><p class="qt"><span class="n">3.3</span>Rate yourself as a learner right now.</p><p class="hint">Choose one number for each. 1 means "I need to work on this" and 5 means "this is a strength".</p><div class="scalewrap"><table class="scale"><thead><tr><th></th><th>1<br><span>Work on</span></th><th>2</th><th>3</th><th>4</th><th>5<br><span>Strength</span></th></tr></thead><tbody><tr><td>Staying organised</td><td class="dot"><label><input type="radio" name="self_1" value="1" aria-label="Staying organised: 1"><span>1</span></label></td><td class="dot"><label><input type="radio" name="self_1" value="2" aria-label="Staying organised: 2"><span>2</span></label></td><td class="dot"><label><input type="radio" name="self_1" value="3" aria-label="Staying organised: 3"><span>3</span></label></td><td class="dot"><label><input type="radio" name="self_1" value="4" aria-label="Staying organised: 4"><span>4</span></label></td><td class="dot"><label><input type="radio" name="self_1" value="5" aria-label="Staying organised: 5"><span>5</span></label></td></tr><tr><td>Managing my time</td><td class="dot"><label><input type="radio" name="self_2" value="1" aria-label="Managing my time: 1"><span>1</span></label></td><td class="dot"><label><input type="radio" name="self_2" value="2" aria-label="Managing my time: 2"><span>2</span></label></td><td class="dot"><label><input type="radio" name="self_2" value="3" aria-label="Managing my time: 3"><span>3</span></label></td><td class="dot"><label><input type="radio" name="self_2" value="4" aria-label="Managing my time: 4"><span>4</span></label></td><td class="dot"><label><input type="radio" name="self_2" value="5" aria-label="Managing my time: 5"><span>5</span></label></td></tr><tr><td>Keeping up with homework</td><td class="dot"><label><input type="radio" name="self_3" value="1" aria-label="Keeping up with homework: 1"><span>1</span></label></td><td class="dot"><label><input type="radio" name="self_3" value="2" aria-label="Keeping up with homework: 2"><span>2</span></label></td><td class="dot"><label><input type="radio" name="self_3" value="3" aria-label="Keeping up with homework: 3"><span>3</span></label></td><td class="dot"><label><input type="radio" name="self_3" value="4" aria-label="Keeping up with homework: 4"><span>4</span></label></td><td class="dot"><label><input type="radio" name="self_3" value="5" aria-label="Keeping up with homework: 5"><span>5</span></label></td></tr><tr><td>Staying focused in class</td><td class="dot"><label><input type="radio" name="self_4" value="1" aria-label="Staying focused in class: 1"><span>1</span></label></td><td class="dot"><label><input type="radio" name="self_4" value="2" aria-label="Staying focused in class: 2"><span>2</span></label></td><td class="dot"><label><input type="radio" name="self_4" value="3" aria-label="Staying focused in class: 3"><span>3</span></label></td><td class="dot"><label><input type="radio" name="self_4" value="4" aria-label="Staying focused in class: 4"><span>4</span></label></td><td class="dot"><label><input type="radio" name="self_4" value="5" aria-label="Staying focused in class: 5"><span>5</span></label></td></tr><tr><td>Asking for help when I'm stuck</td><td class="dot"><label><input type="radio" name="self_5" value="1" aria-label="Asking for help when I'm stuck: 1"><span>1</span></label></td><td class="dot"><label><input type="radio" name="self_5" value="2" aria-label="Asking for help when I'm stuck: 2"><span>2</span></label></td><td class="dot"><label><input type="radio" name="self_5" value="3" aria-label="Asking for help when I'm stuck: 3"><span>3</span></label></td><td class="dot"><label><input type="radio" name="self_5" value="4" aria-label="Asking for help when I'm stuck: 4"><span>4</span></label></td><td class="dot"><label><input type="radio" name="self_5" value="5" aria-label="Asking for help when I'm stuck: 5"><span>5</span></label></td></tr><tr><td>Preparing for tests</td><td class="dot"><label><input type="radio" name="self_6" value="1" aria-label="Preparing for tests: 1"><span>1</span></label></td><td class="dot"><label><input type="radio" name="self_6" value="2" aria-label="Preparing for tests: 2"><span>2</span></label></td><td class="dot"><label><input type="radio" name="self_6" value="3" aria-label="Preparing for tests: 3"><span>3</span></label></td><td class="dot"><label><input type="radio" name="self_6" value="4" aria-label="Preparing for tests: 4"><span>4</span></label></td><td class="dot"><label><input type="radio" name="self_6" value="5" aria-label="Preparing for tests: 5"><span>5</span></label></td></tr><tr><td>Handling stress about school</td><td class="dot"><label><input type="radio" name="self_7" value="1" aria-label="Handling stress about school: 1"><span>1</span></label></td><td class="dot"><label><input type="radio" name="self_7" value="2" aria-label="Handling stress about school: 2"><span>2</span></label></td><td class="dot"><label><input type="radio" name="self_7" value="3" aria-label="Handling stress about school: 3"><span>3</span></label></td><td class="dot"><label><input type="radio" name="self_7" value="4" aria-label="Handling stress about school: 4"><span>4</span></label></td><td class="dot"><label><input type="radio" name="self_7" value="5" aria-label="Handling stress about school: 5"><span>5</span></label></td></tr></tbody></table></div></div></section><section class="card sec s4" style="--sc:var(--teal);--scs:var(--teal-soft)"><div class="sh"><span class="sn">4</span><h2>Looking ahead</h2></div><div class="block"><p class="qt"><span class="n">4.1</span>What is one goal you have for Chemistry next year?</p><p class="hint">It could be a result, a skill or a habit.</p><textarea class="area" name="goal" rows="2" aria-label="Your answer"></textarea></div><div class="block"><p class="qt"><span class="n">4.2</span>After school, what are you thinking about?</p><p class="hint">Tick any that apply. It's fine not to know yet.</p><div class="opts three"><label class="opt"><input type="checkbox" name="after" value="University"><span>University</span></label><label class="opt"><input type="checkbox" name="after" value="TAFE"><span>TAFE</span></label><label class="opt"><input type="checkbox" name="after" value="An apprenticeship"><span>An apprenticeship</span></label><label class="opt"><input type="checkbox" name="after" value="Work"><span>Work</span></label><label class="opt"><input type="checkbox" name="after" value="A gap year"><span>A gap year</span></label><label class="opt"><input type="checkbox" name="after" value="Not sure yet"><span>Not sure yet</span></label></div></div><div class="block"><p class="qt"><span class="n">4.3</span>Is there a course, career or area that interests you? <span class="optl">(optional)</span></p><input class="line" type="text" name="career" aria-label="Your answer"></div></section><section class="card sec s5" style="--sc:var(--orange);--scs:var(--orange-soft)"><div class="sh"><span class="sn">5</span><h2>Outside school</h2></div><div class="block"><p class="qt"><span class="n">5.1</span>Do you have regular commitments outside school?</p><p class="hint">Tick any that apply. You can add rough hours per week if you like. This helps me plan homework and deadlines.</p><table class="subj"><thead><tr><th>Commitment</th><th>Hours per week (optional)</th></tr></thead><tbody><tr><td><label class="opt"><input type="checkbox" name="commit" value="Part-time job"><span>Part-time job</span></label></td><td><input class="line short" type="text" inputmode="decimal" name="hours_1" aria-label="Hours per week for Part-time job"></td></tr><tr><td><label class="opt"><input type="checkbox" name="commit" value="Sport or training"><span>Sport or training</span></label></td><td><input class="line short" type="text" inputmode="decimal" name="hours_2" aria-label="Hours per week for Sport or training"></td></tr><tr><td><label class="opt"><input type="checkbox" name="commit" value="Music, dance or drama"><span>Music, dance or drama</span></label></td><td><input class="line short" type="text" inputmode="decimal" name="hours_3" aria-label="Hours per week for Music, dance or drama"></td></tr><tr><td><label class="opt"><input type="checkbox" name="commit" value="Tutoring"><span>Tutoring</span></label></td><td><input class="line short" type="text" inputmode="decimal" name="hours_4" aria-label="Hours per week for Tutoring"></td></tr><tr><td><label class="opt"><input type="checkbox" name="commit" value="Volunteering or a club"><span>Volunteering or a club</span></label></td><td><input class="line short" type="text" inputmode="decimal" name="hours_5" aria-label="Hours per week for Volunteering or a club"></td></tr><tr><td><label class="opt"><input type="checkbox" name="commit" value="Other"><span>Other</span><input class="otxt" type="text" name="commit_other" aria-label="Other commitment"></label></td><td><input class="line short" type="text" inputmode="decimal" name="hours_6" aria-label="Hours per week for Other"></td></tr></tbody></table></div><div class="block"><p class="qt"><span class="n">5.2</span>What do you enjoy doing in your free time?</p><textarea class="area" name="free" rows="2" aria-label="Your answer"></textarea></div><div class="block"><p class="qt"><span class="n">5.3</span>Pick any two prompts and finish them.</p><p class="hint">Choose a prompt from each list, then write your answer beside it.</p><div class="pick"><select name="prompt_1" aria-label="Prompt 1"><option value="">Choose a prompt…</option><option value="1">1. A show, game, book or music I'm into right now is…</option><option value="2">2. A food I could eat every week is…</option><option value="3">3. A place I'd love to visit is…</option><option value="4">4. Something I'm good at outside school is…</option><option value="5">5. Something most people don't know about me is…</option></select><input class="line" type="text" name="prompt_1_ans" aria-label="Your answer to prompt 1"></div><div class="pick"><select name="prompt_2" aria-label="Prompt 2"><option value="">Choose a prompt…</option><option value="1">1. A show, game, book or music I'm into right now is…</option><option value="2">2. A food I could eat every week is…</option><option value="3">3. A place I'd love to visit is…</option><option value="4">4. Something I'm good at outside school is…</option><option value="5">5. Something most people don't know about me is…</option></select><input class="line" type="text" name="prompt_2_ans" aria-label="Your answer to prompt 2"></div></div></section><section class="card sec s6" style="--sc:var(--purple);--scs:var(--purple-soft)"><div class="sh"><span class="sn">6</span><h2>Help me help you</h2></div><div class="block"><p class="qt"><span class="n">6.1</span>When you're stuck in class, what do you prefer?</p><p class="hint">Choose one.</p><div class="opts "><label class="opt"><input type="radio" name="stuck" value="I&#x27;ll put my hand up"><span>I'll put my hand up</span></label><label class="opt"><input type="radio" name="stuck" value="I&#x27;d rather ask you quietly at my desk"><span>I'd rather ask you quietly at my desk</span></label><label class="opt"><input type="radio" name="stuck" value="I&#x27;d rather ask after class or by message"><span>I'd rather ask after class or by message</span></label><label class="opt"><input type="radio" name="stuck" value="I like to try it myself first, then ask"><span>I like to try it myself first, then ask</span></label></div></div><div class="block"><p class="qt"><span class="n">6.2</span>How do you feel about being asked questions in front of the class?</p><p class="hint">Choose one.</p><div class="opts three"><label class="opt"><input type="radio" name="called" value="Happy to be called on"><span>Happy to be called on</span></label><label class="opt"><input type="radio" name="called" value="Okay if I&#x27;ve had time to think first"><span>Okay if I've had time to think first</span></label><label class="opt"><input type="radio" name="called" value="I&#x27;d prefer to volunteer"><span>I'd prefer to volunteer</span></label></div></div><div class="block"><p class="qt"><span class="n">6.3</span>What could I do as your teacher to help you most next year?</p><textarea class="area" name="help" rows="3" aria-label="Your answer"></textarea></div><div class="block"><p class="qt"><span class="n">6.4</span>Is there anything else you'd like me to know? <span class="optl">(optional)</span></p><p class="hint">For example, something that affects how you learn. You can also tell me in person instead.</p><textarea class="area" name="else" rows="3" aria-label="Your answer"></textarea></div></section>
+
+<section class="card done">
+<h2>Finished?</h2>
+<p>Check that your full name is at the top. Then save your answers as a PDF and email the PDF to me.</p>
+<div class="row"><button class="btn primary" type="button" data-pdf><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M12 12v6M9.5 15.5L12 18l2.5-2.5"/></svg>Save as PDF</button>
+<button class="btn" type="button" id="clear">Clear my answers</button></div>
+<p id="msg" class="msg" role="status" aria-live="polite"></p>
+</section>
+<p class="printonly" style="font-family:var(--display);font-weight:600;color:var(--acc);margin-top:8px">Thank you for filling this in. I'm looking forward to working with you next year.</p>
+</form>
+<script>
+(function(){
+var KEY='y11-gtky-2026', form=document.getElementById('f');
+function save(){var d={};form.querySelectorAll('input,textarea,select').forEach(function(el){if(!el.name)return;
+ if(el.type==='checkbox'||el.type==='radio'){if(el.checked){(d[el.name]=d[el.name]||[]).push(el.value)}}else{d[el.name]=el.value}});
+ try{localStorage.setItem(KEY,JSON.stringify(d))}catch(e){}}
+function load(){var d;try{d=JSON.parse(localStorage.getItem(KEY)||'null')}catch(e){d=null}if(!d)return;
+ form.querySelectorAll('input,textarea,select').forEach(function(el){if(!el.name||!(el.name in d))return;var v=d[el.name];
+ if(el.type==='checkbox'||el.type==='radio'){el.checked=Array.isArray(v)&&v.indexOf(el.value)>-1}else{el.value=v}})}
+function grow(t){t.style.height='auto';t.style.height=(t.scrollHeight+4)+'px'}
+function limits(){document.querySelectorAll('.opts[data-max]').forEach(function(g){var mx=+g.dataset.max,
+ boxes=g.querySelectorAll('input[type=checkbox]'),n=[].filter.call(boxes,function(b){return b.checked}).length;
+ boxes.forEach(function(b){var off=!b.checked&&n>=mx;b.disabled=off;b.closest('.opt').classList.toggle('dis',off)});
+ var m=g.parentNode.querySelector('.maxmsg');if(m)m.hidden=n<mx})}
+load();limits();
+document.querySelectorAll('textarea').forEach(grow);
+form.addEventListener('input',function(e){if(e.target.tagName==='TEXTAREA')grow(e.target);
+ if(e.target.classList.contains('otxt')&&e.target.value){var c=e.target.closest('.opt').querySelector('input[type=checkbox],input[type=radio]');if(c&&!c.disabled)c.checked=true}
+ limits();save()});
+form.addEventListener('change',function(){limits();save()});
+form.addEventListener('submit',function(e){e.preventDefault()});
+var msg=document.getElementById('msg');
+function toPdf(){var nm=document.getElementById('fullname').value.trim();
+ if(!nm){msg.className='msg';msg.textContent='Please write your full name at the top first, so I know whose sheet it is.';
+  document.getElementById('fullname').focus();return}
+ msg.className='msg ok';msg.textContent='';
+ var old=document.title;document.title='Getting to know you - '+nm;
+ document.querySelectorAll('textarea').forEach(grow);
+ window.print();setTimeout(function(){document.title=old},1500)}
+document.querySelectorAll('[data-pdf]').forEach(function(b){b.addEventListener('click',toPdf)});
+document.getElementById('clear').addEventListener('click',function(){
+ if(!confirm('Clear all your answers on this device? This cannot be undone.'))return;
+ try{localStorage.removeItem(KEY)}catch(e){}form.reset();document.querySelectorAll('textarea').forEach(grow);limits();
+ msg.className='msg ok';msg.textContent='Your answers have been cleared.'});
+})();
+</script>
+</body></html>
