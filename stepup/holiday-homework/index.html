@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en-AU"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="robots" content="noindex,nofollow">
+<title>Holiday homework booklet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,600;0,700;1,400&family=Spectral:ital,wght@0,400;0,600;1,400&display=swap">
+<style>
+:root{--bg:#eef2f5;--surface:#fff;--ink:#1c2630;--muted:#52606d;--line:#d6dee5;--tint:#f2f5f8;--acc:#0f5f6b;--acc2:#d9472f;
+--teal-soft:#dfeef0;--tomato-soft:#fce8e3;--purple:#6d3fc7;--purple-soft:#ece3fb;
+--display:"Spectral",Georgia,serif;--body:"IBM Plex Sans",system-ui,sans-serif;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#151d26;--surface:#1e2934;--ink:#eef3f6;--muted:#aab7c3;--line:#33424f;--tint:#25333f;--acc:#5cc8cc;--acc2:#ff7d61;
+--teal-soft:#1f3c43;--tomato-soft:#43281f;--purple:#c2a6ff;--purple-soft:#36295e;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#151d26;--surface:#1e2934;--ink:#eef3f6;--muted:#aab7c3;--line:#33424f;--tint:#25333f;--acc:#5cc8cc;--acc2:#ff7d61;
+--teal-soft:#1f3c43;--tomato-soft:#43281f;--purple:#c2a6ff;--purple-soft:#36295e;color-scheme:dark}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.5}
+h1,h2{font-family:var(--display);color:var(--acc);margin:0;line-height:1.15;font-weight:600}
+p{margin:0}
+.wrap{max-width:900px;margin:0 auto;padding:22px max(16px,env(safe-area-inset-left)) 80px;display:grid;gap:18px}
+.toprow{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.toprow .r{display:flex;gap:10px;flex-wrap:wrap}
+.btn{appearance:none;display:inline-flex;align-items:center;gap:8px;border:2px solid var(--line);background:var(--surface);color:var(--ink);border-radius:10px;padding:8px 14px;font:700 15px var(--body);cursor:pointer;text-decoration:none}
+.btn:hover{border-color:var(--muted)}
+.btn.primary{background:var(--acc);border-color:var(--acc);color:var(--surface)}
+.btn.lg{padding:12px 20px;font-size:16.5px}
+.ico{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:22px clamp(18px,3vw,30px)}
+.hero{position:relative;overflow:hidden;display:grid;grid-template-columns:minmax(0,1fr) 160px;gap:24px;align-items:center}
+.hero .big{position:absolute;right:24px;top:-34px;font-family:var(--display);font-weight:600;font-size:190px;line-height:1;color:var(--tint);pointer-events:none}
+.hero>*:not(.big){position:relative}
+.hero .eyebrow{color:var(--acc2);font-weight:700;font-size:15px;margin:0 0 6px}
+.hero h1{font-size:clamp(30px,5vw,42px)}
+.hero .sub{font-family:var(--display);font-style:italic;font-size:19px;color:var(--muted);margin:8px 0 18px;max-width:42ch}
+.hero .acts{display:flex;gap:10px;flex-wrap:wrap}
+.cover{display:block;width:100%;border:1px solid var(--line);border-radius:4px;box-shadow:0 6px 18px rgba(28,38,48,.12)}
+@media (max-width:640px){.hero{grid-template-columns:1fr}.cover{max-width:170px}}
+.how{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.how div{background:var(--tint);border-radius:6px;padding:12px 14px;font-size:15.5px}
+.how b{display:flex;align-items:center;gap:8px;color:var(--acc);font-size:16px;margin-bottom:4px}
+.how b i{font-style:normal;display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--acc);color:var(--surface);font-size:13px}
+@media (max-width:800px){.how{grid-template-columns:1fr 1fr}}
+h2{font-size:24px;margin-bottom:12px}
+.secs{list-style:none;margin:0;padding:0;display:grid;gap:0}
+.secs li{display:grid;grid-template-columns:44px minmax(0,1fr) auto;gap:12px;align-items:baseline;padding:12px 0;border-bottom:1px solid var(--line)}
+.secs li:last-child{border-bottom:0}
+.secs .n{font-family:var(--display);font-weight:600;font-size:26px;color:var(--acc2);line-height:1}
+.secs b{display:block;font-size:17px}
+.secs span.d{color:var(--muted);font-size:15.5px}
+.secs .pg{color:var(--muted);font-size:14px;white-space:nowrap}
+.due{display:inline-block;margin-left:6px;font-size:12.5px;font-weight:700;color:var(--purple);background:var(--purple-soft);border-radius:99px;padding:1px 9px;vertical-align:2px}
+.note{display:flex;gap:10px;align-items:flex-start;border-left:4px solid var(--acc);background:var(--teal-soft);border-radius:4px;padding:10px 14px;font-size:15.5px}
+.note .ico{color:var(--acc);margin-top:2px}
+.tips{margin:0;padding-left:20px;color:var(--muted);font-size:15.5px;display:grid;gap:4px}
+</style><script src="../../assets/theme.js?v=1"></script></head>
+<body><main class="wrap">
+<div class="toprow"><a class="btn" href="../../"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>Course outline</a><div class="r"></div></div>
+
+<section class="card hero"><div class="big">11</div>
+<div>
+<p class="eyebrow">Year 11 Chemistry · Step-Up</p>
+<h1>Holiday homework booklet</h1>
+<p class="sub">Orientation and foundation skills. Start it in class during Step-Up, then finish it over the summer holidays.</p>
+<div class="acts">
+<a class="btn primary lg" href="holiday-homework-booklet.pdf" target="_blank" rel="noopener"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg>Open the booklet</a>
+<a class="btn lg" href="holiday-homework-booklet.pdf" download><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7.5 10.5L12 15l4.5-4.5M5 20h14"/></svg>Download the PDF</a>
+</div>
+</div>
+<a href="holiday-homework-booklet.pdf" target="_blank" rel="noopener" aria-label="Open the booklet"><img class="cover" src="cover.jpg" alt="Cover of the Orientation and foundation skills holiday homework booklet" width="420" height="594"></a>
+</section>
+
+<section class="card"><div class="how">
+<div><b><i>1</i>Start in class</b>We will start the booklet together during Step-Up.</div>
+<div><b><i>2</i>Finish it over the holidays</b>Work through every section before school starts.</div>
+<div><b><i>3</i>Show your working</b>Use a periodic table and show every step.</div>
+<div><b><i>4</i>Bring it to your first lesson</b>Bring the finished booklet to your first Chemistry lesson next year.</div>
+</div></section>
+
+<section class="card">
+<h2>What is in the booklet</h2>
+<ul class="secs">
+<li><span class="n">1</span><span><b>Foundation skills worksheet</b><span class="d">Atoms, formulas, balancing, units and experimental design</span></span><span class="pg">Page 2</span></li>
+<li><span class="n">2</span><span><b>Forming ions</b><span class="d">Electron shells and ion charges</span></span><span class="pg">Page 7</span></li>
+<li><span class="n">3</span><span><b>Holiday homework <span class="due">Due in your first lesson</span></b><span class="d">Ions, naming, formulas, equations and transposing</span></span><span class="pg">Page 10</span></li>
+<li><span class="n">4</span><span><b>Balancing equations</b><span class="d">Extra balancing practice</span></span><span class="pg">Page 14</span></li>
+</ul>
+</section>
+
+<section class="card">
+<h2>Tips</h2>
+<ul class="tips">
+<li>Print the PDF on A4 paper, or write your answers on the PDF in a note-taking app on your iPad or laptop.</li>
+<li>If you are stuck on a question, write down what you tried and move on. We will go through the booklet together in class.</li>
+</ul>
+</section>
+</main></body></html>
