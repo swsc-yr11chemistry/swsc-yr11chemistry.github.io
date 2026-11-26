@@ -343,9 +343,53 @@ header .lede{font-family:var(--display);font-style:italic;font-size:17px;color:v
 @media (max-width:640px){header::after{font-size:130px;top:-16px}}
 .vtabs button[aria-selected="true"]{color:var(--accent);border-bottom-color:var(--tomato)}
 .items a{color:var(--accent);font-weight:600}
+.toprow{display:flex;justify-content:flex-end;gap:10px;flex-wrap:wrap;margin-bottom:-8px}
+.toprow .r{display:flex;gap:10px;flex-wrap:wrap}
+.pbtn,.toprow .btn{appearance:none;display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px;border-radius:4px;border:2px solid var(--line);background:var(--surface);color:var(--accent);font:600 14.5px var(--body);text-decoration:none;cursor:pointer}
+.toprow .btn{color:var(--ink)}
+.pbtn:hover,.toprow .btn:hover{border-color:var(--tomato)}
+.pbtn svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+@media print{
+  @page{size:A4;margin:12mm}
+  :root{--bg:#fff;--surface:#fff;--ink:#1c2630;--muted:#52606d;--line:#d6dee5;--tint:#fff;--accent-soft:#fff;--sac-bg:#fff;--exam-bg:#fff}
+  html,body{background:#fff!important}
+  body{font-size:10pt}
+  .wrap{max-width:none!important;padding:0!important;gap:10px!important}
+  .toprow,.vtabs,.wkbar,.fnote,.sackk,#calbox,#calkey,.seg,.pastbtn,.chev,.stlab span,.items details summary .more{display:none!important}
+  header{border:0!important;border-bottom:2px solid var(--accent)!important;border-radius:0!important;padding:0 0 6px!important}
+  header::after{display:none!important}
+  header h1{font-size:20pt!important}
+  header .lede{font-size:10.5pt!important}
+  .sacstrip{gap:6px!important}
+  .sacstrip .sc{border:1px solid var(--line)!important;background:#fff!important;padding:6px 8px!important}
+  #panel-yr{display:grid!important;break-after:page}
+  #panel-yr .toolbar,#paceLede{display:none!important}
+  #panel-yr::before{content:"Pacing and SACs";font-family:var(--display);font-size:14pt;font-weight:600;color:var(--accent)}
+  #pacebox{display:block!important}
+  .pacelist .cov,.pacelist [id^="kk"]{display:none!important}
+  #panel-wk{display:grid!important}
+  details.term-d{border:0!important;border-radius:0!important;break-before:auto}
+  details.term-d>summary{padding:8px 0 4px!important;border-bottom:1px solid var(--accent);border-radius:0!important;break-after:avoid}
+  .tbody{padding:0!important}
+  .wk{break-inside:avoid;padding:6px 4px 6px 14px!important;grid-template-columns:80px minmax(0,1fr)!important}
+  .wk.now{background:none!important}
+  .nowtag{display:none!important}
+  .aosb{break-after:avoid;padding:10px 0 4px!important}
+  #terms .wk[hidden]{display:grid!important}
+  #terms li[hidden]{display:flex!important}
+  #terms .aosb[hidden]{display:flex!important}
+  #terms details.term-d[hidden],#terms .hol[hidden]{display:block!important}
+  .items li.as{background:none!important;border:1px solid var(--line);padding:3px 8px!important;margin:0!important}
+  .items .lbl a{text-decoration:none!important}
+  .tag{border:1px solid currentColor;background:none!important}
+  footer{margin-top:8px;font-size:8.5pt}
+}
+.themebtn{appearance:none;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--accent);display:grid;place-items:center;cursor:pointer;padding:0}
+
 </style>
 
 <div class="wrap">
+  <div class="toprow"><div class="r"><button class="pbtn" id="printOutline" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 8V3h10v5"/><rect x="3" y="8" width="18" height="9" rx="2"/><path d="M7 14h10v7H7z"/></svg>Print outline</button><a class="pbtn" href="print.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M9 12h7M9 16h7"/></svg>Print lessons</a></div></div>
   <header>
     <div class="eyebrow">VCE Chemistry · Course outline</div>
     <h1>Chemistry Units 1&amp;2 · 2027</h1>
@@ -535,4 +579,16 @@ document.getElementById("freset").onclick=()=>{active=new Set();apply();};
 apply();
 })();
 </script>
+<script>(function(){
+var saved=null;
+function prep(){if(saved)return;var tw=document.getElementById("terms");
+  saved={past:tw.classList.contains("hidepast"),open:[].map.call(document.querySelectorAll("details.term-d"),function(d){return d.open;}),theme:document.documentElement.getAttribute("data-theme")};
+  tw.classList.remove("hidepast");document.querySelectorAll("details.term-d").forEach(function(d){d.open=true;});
+  document.documentElement.setAttribute("data-theme","light");}
+function undo(){if(!saved)return;var tw=document.getElementById("terms");tw.classList.toggle("hidepast",saved.past);
+  document.querySelectorAll("details.term-d").forEach(function(d,i){d.open=saved.open[i];});
+  if(saved.theme)document.documentElement.setAttribute("data-theme",saved.theme);else document.documentElement.removeAttribute("data-theme");saved=null;}
+window.addEventListener("beforeprint",prep);window.addEventListener("afterprint",function(){setTimeout(undo,300);});
+document.getElementById("printOutline").addEventListener("click",function(){prep();setTimeout(function(){window.print();},60);});
+})();</script>
 </body></html>

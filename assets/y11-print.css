@@ -1,0 +1,126 @@
+/* Printed worksheets for the Year 11 lesson pages (A4, ink friendly). */
+.y11print{display:none}
+
+.pr-doc{--pr-ink:#1c2630;--pr-muted:#52606d;--pr-rule:#b9c4cd;--pr-soft:#d6dee5;--pr-teal:#0f5f6b;--pr-tomato:#c4402a;
+  font-family:"IBM Plex Sans",system-ui,sans-serif;color:var(--pr-ink);font-size:10.5pt;line-height:1.45;background:#fff;
+  max-width:190mm;margin:0 auto;text-align:left}
+.pr-doc *{box-shadow:none!important}
+.pr-doc h1,.pr-doc h2,.pr-doc h3,.pr-doc h4{font-family:"Spectral",Georgia,serif;font-weight:600;color:var(--pr-teal);line-height:1.2;margin:0}
+.pr-doc p{margin:0 0 6px}
+.pr-doc sub,.pr-doc sup{line-height:0}
+.pr-doc a{color:var(--pr-teal)}
+
+.pr-head{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;border-bottom:2px solid var(--pr-teal);padding-bottom:8px;margin-bottom:8px}
+.pr-eyebrow{font-size:9pt;font-weight:700;color:var(--pr-tomato);margin-bottom:2px}
+.pr-head h1{font-size:21pt}
+.pr-sub{font-family:"Spectral",Georgia,serif;font-style:italic;color:var(--pr-muted);margin:3px 0 0!important;font-size:11.5pt}
+.pr-kq{margin:6px 0 0!important;font-size:11pt}
+.pr-kq b{color:var(--pr-tomato);margin-right:6px}
+.pr-qr{flex:none;width:23mm;text-align:center;font-size:7pt;color:var(--pr-muted)}
+.pr-qr svg{width:21mm;height:21mm;display:block;margin:0 auto 2px}
+.pr-qr svg path,.pr-qr svg rect[fill="black"]{fill:#000}
+.pr-name{display:flex;align-items:flex-end;gap:8px;margin:2px 0 10px;font-size:10pt;font-weight:600}
+.pr-name i{flex:1;border-bottom:1px solid var(--pr-ink);height:16px}
+.pr-name i.short{flex:0 0 32mm}
+
+.pr-intro{display:grid;grid-template-columns:1.15fr 1fr;gap:8px;margin-bottom:6px}
+.pr-icard{border:1px solid var(--pr-soft);border-radius:4px;padding:8px 10px;break-inside:avoid}
+.pr-icard h2{font-size:12pt;margin-bottom:4px}
+.pr-icard h3{font-size:10pt;margin:6px 0 2px;color:var(--pr-tomato);font-family:"IBM Plex Sans",sans-serif;font-weight:700}
+.pr-icard ul,.pr-icard ol{margin:2px 0 0;padding-left:18px}
+.pr-icard li{margin:1px 0}
+
+.pr-part{margin-top:12px}
+.pr-phead{border-bottom:1px solid var(--pr-rule);padding-bottom:3px;margin-bottom:8px;break-inside:avoid;break-after:avoid}
+.pr-pno{display:block;font-size:8.5pt;font-weight:700;color:var(--pr-tomato)}
+.pr-phead h2{font-size:15pt}
+.pr-pbody{display:block}
+.pr-pbody>*{margin-bottom:8px}
+.pr-pbody .lead,.pr-pbody h3,.pr-pbody h4,.pr-q>p:first-child{break-after:avoid}
+.pr-pbody h3{font-size:12pt;margin:10px 0 4px;break-after:avoid}
+.pr-pbody h4{font-size:11pt;margin:0 0 4px;break-after:avoid}
+.pr-pbody .lead{font-size:10.5pt;color:var(--pr-ink);max-width:none}
+.pr-pbody .note{font-size:9.5pt;color:var(--pr-muted)}
+.pr-pbody ul,.pr-pbody ol{padding-left:20px;margin:4px 0}
+.pr-pbody .steps{display:block}
+.pr-pbody .pr-step{display:block;margin-bottom:10px}
+.pr-pbody .pr-step>*{margin-bottom:6px}
+.pr-pbody .task{display:block;background:none;border-radius:0;border-left:3px solid var(--pr-tomato);padding:2px 0 2px 10px;margin:8px 0 6px;font-weight:600;max-width:none;break-after:avoid}
+.pr-pbody .task .lab{display:inline;font-size:9pt;font-weight:700;color:var(--pr-tomato);margin-right:6px}
+.pr-pbody .worked{display:block;background:none;border:1px solid var(--pr-soft);border-left:3px solid var(--pr-teal);border-radius:3px;padding:6px 10px;max-width:none;break-inside:avoid}
+.pr-pbody .worked .line{display:block;font-size:10.5pt;margin:1px 0}
+.pr-pbody .worked .why{display:block;font-size:9.5pt;color:var(--pr-muted);margin-top:3px}
+.pr-pbody .fig{display:block;break-inside:avoid;border:1px solid var(--pr-soft);border-radius:3px;padding:6px 8px;background:#fff}
+.pr-pbody .fig svg{max-height:80mm;width:100%;height:auto}
+.pr-pbody .fig figcaption{font-size:9.5pt;color:var(--pr-muted);max-width:none;margin-top:3px}
+.pr-pbody .tscroll{overflow:visible}
+.pr-pbody .ptable{font-size:9.5pt;break-inside:avoid;width:100%;border-collapse:collapse}
+.pr-pbody .ptable th{font-size:9pt;padding:3px 6px;border-bottom:1.5px solid var(--pr-rule)}
+.pr-pbody .ptable td{padding:3px 6px;border-bottom:1px solid var(--pr-soft)}
+.pr-pbody .frac{font-size:.95em}
+.pr-pbody img,.pr-pbody svg{max-width:100%}
+.pr-pbody .eqn{font-size:11pt;line-height:2.2;gap:4px}
+
+.pr-q{display:block;border-top:1px solid var(--pr-soft);padding-top:7px;margin-top:4px;break-inside:avoid}
+.pr-q>p{margin:0 0 4px}
+.pr-qno{display:inline-grid;place-items:center;min-width:6mm;height:6mm;padding:0 1.2mm;margin-right:7px;border-radius:3mm;background:var(--pr-teal);color:#fff;font-size:8.5pt;font-weight:700;vertical-align:1px;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.pr-hint{font-size:9.5pt;font-weight:600;color:var(--pr-muted)!important;margin:4px 0 2px!important}
+.pr-lines{margin:2px 0 6px}
+.pr-line{height:8mm;border-bottom:1px solid var(--pr-rule)}
+.pr-ticks{list-style:none;padding:0!important;margin:3px 0 4px!important;display:grid;gap:3px}
+.pr-ticks li{display:flex;gap:7px;align-items:flex-start;font-size:9.5pt}
+.pr-box{flex:none;display:inline-block;width:3.6mm;height:3.6mm;border:1.2px solid var(--pr-ink);border-radius:.8mm;margin-top:.6mm}
+.pr-cf{display:inline-block;width:9mm;height:8mm;border:1.2px solid var(--pr-ink);border-radius:1mm;vertical-align:middle}
+
+.pr-opts{list-style:none;padding:0!important;margin:2px 0 4px!important;display:grid;grid-template-columns:1fr 1fr;gap:3px 18px}
+.pr-opts li{display:flex;gap:7px;align-items:baseline}
+.pr-let{flex:none;display:inline-grid;place-items:center;width:5mm;height:5mm;border:1.2px solid var(--pr-ink);border-radius:50%;font-size:8pt;font-weight:700}
+
+.pr-cardq{border-top:1px solid var(--pr-soft)}
+.pr-cardhead{display:flex;align-items:center;margin-bottom:4px}
+.pr-cardhead .pr-hint{margin:0!important}
+.pr-cards{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.pr-card{position:relative;display:block;border:1px solid var(--pr-soft);border-radius:4px;padding:7px 9px 6px 30px;break-inside:avoid;background:#fff}
+.pr-card p{margin:0 0 3px;font-weight:600;font-size:10pt}
+.pr-card svg{display:block;width:26mm;height:auto;margin:0 auto 4px}
+.pr-cno{position:absolute;left:9px;top:6px;font-family:"Spectral",Georgia,serif;font-weight:600;font-size:12pt;color:var(--pr-teal)}
+
+.pr-goal{width:100%;border-collapse:collapse;font-size:9.5pt;break-inside:avoid}
+.pr-goal th{text-align:center;font-size:8.5pt;color:var(--pr-muted);padding:3px 4px;border-bottom:1.5px solid var(--pr-rule);width:18mm}
+.pr-goal th:first-child{text-align:left;width:auto}
+.pr-goal td{padding:4px;border-bottom:1px solid var(--pr-soft);text-align:center;vertical-align:middle}
+.pr-goal td:first-child{text-align:left}
+
+.pr-extend{border:1px dashed var(--pr-rule);border-radius:4px;padding:7px 10px}
+.pr-xhead{font-weight:700;color:var(--pr-teal);margin-bottom:4px!important}
+
+.pr-kw{break-before:page}
+.pr-kw h3{font-size:12pt;margin:8px 0 4px}
+.pr-kw dl{display:grid;grid-template-columns:max-content 1fr;gap:4px 14px;margin:6px 0 10px}
+.pr-kw dt{font-weight:700;color:var(--pr-teal)}
+.pr-kw dd{margin:0}
+.pr-watch{border:1px solid var(--pr-soft);border-left:3px solid var(--pr-tomato);border-radius:3px;padding:5px 10px;margin-bottom:6px;break-inside:avoid}
+.pr-watch b{color:var(--pr-tomato)}
+.pr-foot{margin-top:14px;padding-top:4px;border-top:1px solid var(--pr-soft);font-size:8pt;color:var(--pr-muted);word-break:break-all}
+
+/* Teacher answer file */
+.pr-teacher .pr-head{border-bottom-color:var(--pr-tomato)}
+.pr-aitem{display:grid;grid-template-columns:8mm 1fr;gap:6px;border-bottom:1px solid var(--pr-soft);padding:6px 0;break-inside:avoid}
+.pr-anum{font-family:"Spectral",Georgia,serif;font-weight:600;font-size:12pt;color:var(--pr-teal)}
+.pr-actx{font-size:9.5pt;font-style:italic;color:var(--pr-muted);margin:0 0 3px!important}
+.pr-abody p{margin:0 0 4px}
+.pr-abody .line{display:block}
+.pr-abody .worked{display:block;background:none;border:0;padding:0}
+.pr-atable{width:100%;border-collapse:collapse;font-size:9.5pt}
+.pr-atable th,.pr-atable td{text-align:left;vertical-align:top;padding:4px 6px;border-bottom:1px solid var(--pr-soft)}
+.pr-atable th{color:var(--pr-tomato)}
+.pr-atable td:first-child{font-weight:700;color:var(--pr-teal)}
+
+@page{size:A4;margin:13mm 13mm 14mm}
+@media print{
+  html,body{background:#fff!important}
+  body.pr-on>*:not(.y11print){display:none!important}
+  body.pr-on .y11print{display:block}
+  .pr-doc{max-width:none;margin:0}
+  .pr-doc+.pr-doc{break-before:page}
+}
